@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    image: ghcr.io/alexta69/metube
+    restart: unless-stopped
+    environment:
+      - UID=1000
+      - GID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - $PWD/downloads:/downloads
+    networks:
+      proxy_apps:
+
+networks:
+  proxy_apps:
+    name: proxy_apps
+    external: true
